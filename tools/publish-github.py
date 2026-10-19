@@ -6,6 +6,7 @@ R=Path(__file__).resolve().parent.parent
 GH=Path(os.environ.get('STARCASE_GH','C:/Users/PC/Documents/Codex/2026-10-13/new-chat/work/github-tools/gh.exe'))
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--publish',action='store_true')
+parser.add_argument('--assembly-run',type=int,help='Reuse a GitHub package-assembly run and avoid uploading the large runtime locally')
 args=parser.parse_args()
 protocol=(R/'native/windows/UpdateProtocol.cs').read_text(encoding='utf8')
 version=re.search(r'Current="([\d.]+)"',protocol).group(1)
@@ -74,6 +75,12 @@ if release is None:
     gh('release','create',tag,'--repo',repo,'--verify-tag','--draft','--title','星匣 '+tag,'--notes-file',R/'docs/releases'/(tag+'.md'))
     release=find_release();assert release is not None
 if release['draft']:
+    if args.assembly_run:
+        from assembly_adopt import adopt
+        adopt(R,release_dir,repo,args.assembly_run,gh)
+        checksums={name:metadata(release_dir/name) for name in assets if name!='checksums.json'}
+        (release_dir/'checksums.json').write_text(json.dumps(checksums,ensure_ascii=False,indent=2),encoding='utf8')
+        release=find_release()
     present={a['name']:a for a in release['assets']}
     for name in assets:
         existing=present.get(name)
