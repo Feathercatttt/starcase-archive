@@ -16,7 +16,9 @@ verify_dir=R/'.build'/('published-'+tag);verify_dir.mkdir(exist_ok=True)
 assets=['Starcase-Windows-Update.zip','Starcase-Windows-Light.zip','Starcase-Windows-Full.zip','Starcase-Android.apk','Starcase.html','Starcase-Source.zip','checksums.json']
 roots=['.gitignore','AGENTS.md','README.md','DESIGN.md','src','native','tools','tests','maintenance','schema','docs']
 def call(command,optional=False):
-    p=subprocess.run([str(a) for a in command],cwd=R,capture_output=True,text=True,encoding='utf8',errors='replace')
+    env=os.environ.copy()
+    if str(command[0])==str(GH):env['GODEBUG']=','.join([x for x in env.get('GODEBUG','').split(',') if x and not x.startswith('http2client=')]+['http2client=0'])
+    p=subprocess.run([str(a) for a in command],cwd=R,capture_output=True,text=True,encoding='utf8',errors='replace',env=env,timeout=1200)
     if p.returncode:
         if optional:return None
         raise RuntimeError('Command failed: '+str(command[0])+'\n'+p.stderr[-2500:])
@@ -72,7 +74,11 @@ if release is None:
     gh('release','create',tag,'--repo',repo,'--verify-tag','--draft','--title','星匣 '+tag,'--notes-file',R/'docs/releases'/(tag+'.md'))
     release=find_release();assert release is not None
 if release['draft']:
+    present={a['name']:a for a in release['assets']}
     for name in assets:
+        existing=present.get(name)
+        if existing and existing.get('state')=='uploaded' and existing.get('digest')=='sha256:'+sha(release_dir/name):
+            print('Already verified in draft',name,flush=True);continue
         print('Uploading',name,metadata(release_dir/name)['size'],'bytes',flush=True)
         gh('release','upload',tag,release_dir/name,'--repo',repo,'--clobber')
     gh('release','edit',tag,'--repo',repo,'--draft=false','--latest')
