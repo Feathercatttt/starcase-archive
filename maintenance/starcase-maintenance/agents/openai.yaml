@@ -1,0 +1,4 @@
+interface:
+  display_name: "星匣维护与发布"
+  short_description: "维护星匣资料库、电脑手机互通、打包测试及 GitHub 更新发布流程"
+  default_prompt: "使用 $starcase-maintenance 继续维护星匣，按现有结构修改功能并验证电脑和手机端。"

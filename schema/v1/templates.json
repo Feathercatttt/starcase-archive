@@ -1,0 +1,1432 @@
+{
+  "app": "starcase-archive",
+  "schemaVersion": 1,
+  "templates": [
+    {
+      "id": "idea.v1",
+      "kind": "idea",
+      "label": "灵感",
+      "area": "ideas",
+      "system": "any",
+      "icon": "spark",
+      "groups": [
+        {
+          "title": "灵感原文",
+          "fields": [
+            {
+              "key": "text",
+              "label": "随手记下",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": true
+        },
+        {
+          "title": "下一步",
+          "fields": [
+            {
+              "key": "nextStep",
+              "label": "准备如何使用",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": false
+        }
+      ]
+    },
+    {
+      "id": "world.location.v1",
+      "kind": "location",
+      "label": "地点",
+      "area": "world",
+      "system": "dnd",
+      "icon": "map",
+      "groups": [
+        {
+          "title": "让这个地方立起来",
+          "fields": [
+            {
+              "key": "region",
+              "label": "所属区域",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "atmosphere",
+              "label": "第一印象与氛围",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "description",
+              "label": "地点描述",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": true
+        },
+        {
+          "title": "在跑团中使用",
+          "fields": [
+            {
+              "key": "inhabitants",
+              "label": "居民与势力",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "secrets",
+              "label": "秘密与冲突",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "hooks",
+              "label": "冒险钩子",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "travel",
+              "label": "到达方式与环境",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": false
+        }
+      ]
+    },
+    {
+      "id": "world.npc.v1",
+      "kind": "npc",
+      "label": "人物",
+      "area": "world",
+      "system": "dnd",
+      "icon": "person",
+      "groups": [
+        {
+          "title": "人物档案",
+          "fields": [
+            {
+              "key": "identity",
+              "label": "身份 / 种族 / 职业",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "appearance",
+              "label": "外貌与说话方式",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "motivation",
+              "label": "想要什么",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": true
+        },
+        {
+          "title": "关系与秘密",
+          "fields": [
+            {
+              "key": "connections",
+              "label": "人物关系",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "secrets",
+              "label": "秘密",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "hooks",
+              "label": "与冒险者的交集",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": false
+        }
+      ]
+    },
+    {
+      "id": "world.faction.v1",
+      "kind": "faction",
+      "label": "势力",
+      "area": "world",
+      "system": "dnd",
+      "icon": "flag",
+      "groups": [
+        {
+          "title": "势力档案",
+          "fields": [
+            {
+              "key": "territory",
+              "label": "活动区域",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "beliefs",
+              "label": "理念与目标",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "members",
+              "label": "成员与组织",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": true
+        },
+        {
+          "title": "行动与关系",
+          "fields": [
+            {
+              "key": "resources",
+              "label": "资源与手段",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "conflicts",
+              "label": "盟友与敌人",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "hooks",
+              "label": "可触发的事件",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": false
+        }
+      ]
+    },
+    {
+      "id": "world.plant.v1",
+      "kind": "plant",
+      "label": "植物",
+      "area": "world",
+      "system": "dnd",
+      "icon": "leaf",
+      "groups": [
+        {
+          "title": "植物档案",
+          "fields": [
+            {
+              "key": "habitat",
+              "label": "生境与分布",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "appearance",
+              "label": "辨识特征",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "season",
+              "label": "季节与生长条件",
+              "type": "text",
+              "help": ""
+            }
+          ],
+          "open": true
+        },
+        {
+          "title": "采集与用途",
+          "fields": [
+            {
+              "key": "harvest",
+              "label": "采集方式与风险",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "uses",
+              "label": "用途与加工",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "essence",
+              "label": "源质 / 炼质关联",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "ecology",
+              "label": "生态与民俗",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": false
+        }
+      ]
+    },
+    {
+      "id": "world.lore.v1",
+      "kind": "lore",
+      "label": "设定 / 历史",
+      "area": "world",
+      "system": "dnd",
+      "icon": "book",
+      "groups": [
+        {
+          "title": "设定正文",
+          "fields": [
+            {
+              "key": "period",
+              "label": "时代 / 时段",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "description",
+              "label": "内容",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": true
+        },
+        {
+          "title": "继续展开",
+          "fields": [
+            {
+              "key": "consequences",
+              "label": "造成的影响",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "questions",
+              "label": "尚未决定的部分",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": false
+        }
+      ]
+    },
+    {
+      "id": "rules.rule.v1",
+      "kind": "rule",
+      "label": "规则",
+      "area": "rules",
+      "system": "any",
+      "icon": "scale",
+      "groups": [
+        {
+          "title": "规则正文",
+          "fields": [
+            {
+              "key": "scope",
+              "label": "适用场景",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "trigger",
+              "label": "触发条件",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "procedure",
+              "label": "处理流程",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "result",
+              "label": "结果与例外",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": true
+        },
+        {
+          "title": "解释与示例",
+          "fields": [
+            {
+              "key": "examples",
+              "label": "使用示例",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "replaces",
+              "label": "替代 / 兼容的规则",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "questions",
+              "label": "待裁定事项",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": false
+        }
+      ]
+    },
+    {
+      "id": "dnd.item.v1",
+      "kind": "item",
+      "label": "魔法物品",
+      "area": "rules",
+      "system": "dnd",
+      "icon": "gem",
+      "groups": [
+        {
+          "title": "物品档案",
+          "fields": [
+            {
+              "key": "category",
+              "label": "物品类型",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "rarity",
+              "label": "稀有度",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "attunement",
+              "label": "同调要求",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "appearance",
+              "label": "外观与风味",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": true
+        },
+        {
+          "title": "规则与使用",
+          "fields": [
+            {
+              "key": "traits",
+              "label": "特性",
+              "type": "rows",
+              "help": "",
+              "columns": [
+                {
+                  "key": "name",
+                  "label": "名称",
+                  "type": "text",
+                  "help": ""
+                },
+                {
+                  "key": "description",
+                  "label": "效果与限制",
+                  "type": "long",
+                  "help": ""
+                }
+              ]
+            },
+            {
+              "key": "charges",
+              "label": "使用次数 / 容量",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "activation",
+              "label": "使用与消耗",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "recovery",
+              "label": "次数与恢复",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "limitations",
+              "label": "限制 / 诅咒",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "price",
+              "label": "价值 / 获取方式",
+              "type": "text",
+              "help": ""
+            }
+          ],
+          "open": false
+        },
+        {
+          "title": "装备数据（可选）",
+          "fields": [
+            {
+              "key": "damage",
+              "label": "基础伤害 / 公式",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "range",
+              "label": "距离",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "weaponTags",
+              "label": "武器词条",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "armor",
+              "label": "护甲数据",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "block",
+              "label": "格挡值",
+              "type": "text",
+              "help": ""
+            }
+          ],
+          "open": false
+        }
+      ]
+    },
+    {
+      "id": "dnd.monster.v1",
+      "kind": "monster",
+      "label": "怪物",
+      "area": "rules",
+      "system": "dnd",
+      "icon": "beast",
+      "groups": [
+        {
+          "title": "基础属性",
+          "fields": [
+            {
+              "key": "species",
+              "label": "种族 / 类型",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "size",
+              "label": "体型",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "role",
+              "label": "定位",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "level",
+              "label": "等级 / 参考等级",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "ac",
+              "label": "护甲等级",
+              "type": "number",
+              "help": ""
+            },
+            {
+              "key": "hp",
+              "label": "生命值 / 公式",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "pb",
+              "label": "熟练加值",
+              "type": "number",
+              "help": ""
+            },
+            {
+              "key": "speed",
+              "label": "速度",
+              "type": "text",
+              "help": ""
+            }
+          ],
+          "open": true
+        },
+        {
+          "title": "六维属性",
+          "fields": [
+            {
+              "key": "str",
+              "label": "力量",
+              "type": "number",
+              "help": ""
+            },
+            {
+              "key": "dex",
+              "label": "敏捷",
+              "type": "number",
+              "help": ""
+            },
+            {
+              "key": "con",
+              "label": "体质",
+              "type": "number",
+              "help": ""
+            },
+            {
+              "key": "int",
+              "label": "智力",
+              "type": "number",
+              "help": ""
+            },
+            {
+              "key": "wis",
+              "label": "感知",
+              "type": "number",
+              "help": ""
+            },
+            {
+              "key": "cha",
+              "label": "魅力",
+              "type": "number",
+              "help": ""
+            }
+          ],
+          "open": false
+        },
+        {
+          "title": "豁免与防御",
+          "fields": [
+            {
+              "key": "saves",
+              "label": "豁免",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "skills",
+              "label": "技能",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "resistances",
+              "label": "伤害抵抗",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "vulnerabilities",
+              "label": "伤害易伤",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "immunities",
+              "label": "伤害免疫",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "conditionImmunities",
+              "label": "状态免疫",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "senses",
+              "label": "感官",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "languages",
+              "label": "语言",
+              "type": "text",
+              "help": ""
+            }
+          ],
+          "open": false
+        },
+        {
+          "title": "特性与动作",
+          "fields": [
+            {
+              "key": "traits",
+              "label": "特性",
+              "type": "rows",
+              "help": "",
+              "columns": [
+                {
+                  "key": "name",
+                  "label": "名称",
+                  "type": "text",
+                  "help": ""
+                },
+                {
+                  "key": "description",
+                  "label": "效果与限制",
+                  "type": "long",
+                  "help": ""
+                }
+              ]
+            },
+            {
+              "key": "actions",
+              "label": "动作",
+              "type": "rows",
+              "help": "",
+              "columns": [
+                {
+                  "key": "name",
+                  "label": "名称",
+                  "type": "text",
+                  "help": ""
+                },
+                {
+                  "key": "cost",
+                  "label": "消耗",
+                  "type": "text",
+                  "help": ""
+                },
+                {
+                  "key": "check",
+                  "label": "命中 / 豁免",
+                  "type": "text",
+                  "help": ""
+                },
+                {
+                  "key": "damage",
+                  "label": "伤害",
+                  "type": "text",
+                  "help": ""
+                },
+                {
+                  "key": "effect",
+                  "label": "效果",
+                  "type": "long",
+                  "help": ""
+                }
+              ]
+            },
+            {
+              "key": "spells",
+              "label": "法术",
+              "type": "rows",
+              "help": "",
+              "columns": [
+                {
+                  "key": "name",
+                  "label": "名称",
+                  "type": "text",
+                  "help": ""
+                },
+                {
+                  "key": "cost",
+                  "label": "消耗 / 环位",
+                  "type": "text",
+                  "help": ""
+                },
+                {
+                  "key": "effect",
+                  "label": "效果",
+                  "type": "long",
+                  "help": ""
+                }
+              ]
+            }
+          ],
+          "open": false
+        },
+        {
+          "title": "生态与特殊内容",
+          "fields": [
+            {
+              "key": "ecology",
+              "label": "生态与描述",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "loot",
+              "label": "掉落物",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "legendary",
+              "label": "传奇 / 史诗 / 场地内容",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": false
+        }
+      ]
+    },
+    {
+      "id": "coc.item.v1",
+      "kind": "item",
+      "label": "物品 / 神秘物品",
+      "area": "rules",
+      "system": "coc",
+      "icon": "gem",
+      "groups": [
+        {
+          "title": "物品档案",
+          "fields": [
+            {
+              "key": "category",
+              "label": "物品类型",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "appearance",
+              "label": "外观与来历",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "discovery",
+              "label": "发现与辨识",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": true
+        },
+        {
+          "title": "使用与代价",
+          "fields": [
+            {
+              "key": "effect",
+              "label": "效果",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "cost",
+              "label": "使用条件与代价",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "risks",
+              "label": "风险与后果",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": false
+        }
+      ]
+    },
+    {
+      "id": "coc.creature.v1",
+      "kind": "monster",
+      "label": "生物 / 怪异",
+      "area": "rules",
+      "system": "coc",
+      "icon": "beast",
+      "groups": [
+        {
+          "title": "生物档案",
+          "fields": [
+            {
+              "key": "category",
+              "label": "类型",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "appearance",
+              "label": "外观与行为",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "hp",
+              "label": "生命值",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "armor",
+              "label": "护甲说明",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "move",
+              "label": "移动力",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "sanity",
+              "label": "理智损失 / 说明",
+              "type": "text",
+              "help": ""
+            }
+          ],
+          "open": true
+        },
+        {
+          "title": "属性与行动",
+          "fields": [
+            {
+              "key": "attributes",
+              "label": "属性",
+              "type": "rows",
+              "help": "",
+              "columns": [
+                {
+                  "key": "name",
+                  "label": "属性",
+                  "type": "text",
+                  "help": ""
+                },
+                {
+                  "key": "value",
+                  "label": "数值",
+                  "type": "text",
+                  "help": ""
+                }
+              ]
+            },
+            {
+              "key": "skills",
+              "label": "技能",
+              "type": "rows",
+              "help": "",
+              "columns": [
+                {
+                  "key": "name",
+                  "label": "技能",
+                  "type": "text",
+                  "help": ""
+                },
+                {
+                  "key": "value",
+                  "label": "百分比 / 数值",
+                  "type": "text",
+                  "help": ""
+                }
+              ]
+            },
+            {
+              "key": "actions",
+              "label": "动作",
+              "type": "rows",
+              "help": "",
+              "columns": [
+                {
+                  "key": "name",
+                  "label": "名称",
+                  "type": "text",
+                  "help": ""
+                },
+                {
+                  "key": "cost",
+                  "label": "消耗",
+                  "type": "text",
+                  "help": ""
+                },
+                {
+                  "key": "check",
+                  "label": "命中 / 豁免",
+                  "type": "text",
+                  "help": ""
+                },
+                {
+                  "key": "damage",
+                  "label": "伤害",
+                  "type": "text",
+                  "help": ""
+                },
+                {
+                  "key": "effect",
+                  "label": "效果",
+                  "type": "long",
+                  "help": ""
+                }
+              ]
+            },
+            {
+              "key": "traits",
+              "label": "特性",
+              "type": "rows",
+              "help": "",
+              "columns": [
+                {
+                  "key": "name",
+                  "label": "名称",
+                  "type": "text",
+                  "help": ""
+                },
+                {
+                  "key": "description",
+                  "label": "效果与限制",
+                  "type": "long",
+                  "help": ""
+                }
+              ]
+            }
+          ],
+          "open": false
+        },
+        {
+          "title": "背景",
+          "fields": [
+            {
+              "key": "ecology",
+              "label": "来源与习性",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "weaknesses",
+              "label": "弱点与应对",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": false
+        }
+      ]
+    },
+    {
+      "id": "coc.module.v1",
+      "kind": "module",
+      "label": "模组总览",
+      "area": "modules",
+      "system": "coc",
+      "icon": "folder",
+      "groups": [
+        {
+          "title": "模组概要",
+          "fields": [
+            {
+              "key": "era",
+              "label": "时代",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "location",
+              "label": "地点",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "players",
+              "label": "人数 / 适用调查员",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "duration",
+              "label": "预计时长",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "pitch",
+              "label": "一句话概念",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": true
+        },
+        {
+          "title": "主持人准备",
+          "fields": [
+            {
+              "key": "truth",
+              "label": "事件真相",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "opening",
+              "label": "调查员导入",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "themes",
+              "label": "氛围与主题",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "preparation",
+              "label": "需要准备的资料",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": false
+        }
+      ]
+    },
+    {
+      "id": "coc.scene.v1",
+      "kind": "scene",
+      "label": "场景",
+      "area": "modules",
+      "system": "coc",
+      "icon": "map",
+      "groups": [
+        {
+          "title": "场景",
+          "fields": [
+            {
+              "key": "location",
+              "label": "发生地点",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "entry",
+              "label": "如何进入",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "readAloud",
+              "label": "场景描述",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": true
+        },
+        {
+          "title": "调查过程",
+          "fields": [
+            {
+              "key": "events",
+              "label": "事件与可交互内容",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "checks",
+              "label": "检定与失败推进",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "leads",
+              "label": "可发现的线索与去向",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "changes",
+              "label": "时间推进后的变化",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": false
+        }
+      ]
+    },
+    {
+      "id": "coc.clue.v1",
+      "kind": "clue",
+      "label": "线索",
+      "area": "modules",
+      "system": "coc",
+      "icon": "search",
+      "groups": [
+        {
+          "title": "线索",
+          "fields": [
+            {
+              "key": "discovery",
+              "label": "发现位置 / 条件",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "content",
+              "label": "调查员能看到的内容",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "meaning",
+              "label": "真实含义",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": true
+        },
+        {
+          "title": "推进调查",
+          "fields": [
+            {
+              "key": "leadsTo",
+              "label": "引向何处",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "fallback",
+              "label": "错过时的替代获得方式",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": false
+        }
+      ]
+    },
+    {
+      "id": "coc.npc.v1",
+      "kind": "npc",
+      "label": "模组人物",
+      "area": "modules",
+      "system": "coc",
+      "icon": "person",
+      "groups": [
+        {
+          "title": "人物",
+          "fields": [
+            {
+              "key": "identity",
+              "label": "身份",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "appearance",
+              "label": "外貌与表现",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "motivation",
+              "label": "动机",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": true
+        },
+        {
+          "title": "在调查中使用",
+          "fields": [
+            {
+              "key": "knows",
+              "label": "知道些什么",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "hides",
+              "label": "隐瞒些什么",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "reaction",
+              "label": "面对调查员的反应",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "statistics",
+              "label": "需要的属性与技能",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": false
+        }
+      ]
+    },
+    {
+      "id": "coc.timeline.v1",
+      "kind": "timeline",
+      "label": "时间线",
+      "area": "modules",
+      "system": "coc",
+      "icon": "clock",
+      "groups": [
+        {
+          "title": "事件顺序",
+          "fields": [
+            {
+              "key": "events",
+              "label": "时间线",
+              "type": "rows",
+              "help": "",
+              "columns": [
+                {
+                  "key": "when",
+                  "label": "时间 / 条件",
+                  "type": "text",
+                  "help": ""
+                },
+                {
+                  "key": "event",
+                  "label": "事件",
+                  "type": "long",
+                  "help": ""
+                },
+                {
+                  "key": "consequence",
+                  "label": "影响",
+                  "type": "long",
+                  "help": ""
+                }
+              ]
+            }
+          ],
+          "open": true
+        }
+      ]
+    },
+    {
+      "id": "coc.handout.v1",
+      "kind": "handout",
+      "label": "线索道具",
+      "area": "modules",
+      "system": "coc",
+      "icon": "paper",
+      "groups": [
+        {
+          "title": "道具",
+          "fields": [
+            {
+              "key": "type",
+              "label": "信件 / 剪报 / 录音等",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "content",
+              "label": "完整内容",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "where",
+              "label": "获得位置",
+              "type": "text",
+              "help": ""
+            }
+          ],
+          "open": true
+        },
+        {
+          "title": "制作备注",
+          "fields": [
+            {
+              "key": "notes",
+              "label": "主持人备注",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": false
+        }
+      ]
+    },
+    {
+      "id": "coc.ending.v1",
+      "kind": "ending",
+      "label": "结局",
+      "area": "modules",
+      "system": "coc",
+      "icon": "flag",
+      "groups": [
+        {
+          "title": "结局",
+          "fields": [
+            {
+              "key": "condition",
+              "label": "触发条件",
+              "type": "text",
+              "help": ""
+            },
+            {
+              "key": "description",
+              "label": "结局叙述",
+              "type": "long",
+              "help": ""
+            },
+            {
+              "key": "aftermath",
+              "label": "后续与遗留影响",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": true
+        }
+      ]
+    },
+    {
+      "id": "custom.v1",
+      "kind": "custom",
+      "label": "自由条目",
+      "area": "world",
+      "system": "any",
+      "icon": "paper",
+      "groups": [
+        {
+          "title": "正文",
+          "fields": [
+            {
+              "key": "description",
+              "label": "内容",
+              "type": "long",
+              "help": ""
+            }
+          ],
+          "open": true
+        }
+      ]
+    }
+  ]
+}

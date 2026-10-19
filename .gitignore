@@ -1,0 +1,12 @@
+private/
+.build/
+outputs/
+native/android/assets/index.html
+__pycache__/
+*.pyc
+*.p12
+*.pem
+*.keystore
+
+tests/*-report.json
+tests/*-failure.json

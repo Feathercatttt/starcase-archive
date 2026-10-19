@@ -1,0 +1,54 @@
+{
+  "app": "starcase-archive",
+  "schemaVersion": 1,
+  "entryKeys": [
+    "id",
+    "templateId",
+    "kind",
+    "area",
+    "system",
+    "title",
+    "summary",
+    "tags",
+    "aliases",
+    "projectId",
+    "status",
+    "favorite",
+    "fields",
+    "customFields",
+    "relations",
+    "source",
+    "coverId",
+    "createdAt",
+    "updatedAt"
+  ],
+  "sourceKeys": [
+    "kind",
+    "title",
+    "url",
+    "revision",
+    "retrievedAt",
+    "raw",
+    "review"
+  ],
+  "customFieldKeys": [
+    "id",
+    "key",
+    "label",
+    "type",
+    "value"
+  ],
+  "relationKeys": [
+    "id",
+    "targetId",
+    "type"
+  ],
+  "blank": "Not provided. Never infer zero. Preserve the literal — for explicitly absent values.",
+  "rules": [
+    "Keep stable IDs across export/import",
+    "Retain source.raw verbatim",
+    "Never replace a private rule with a guessed original rule",
+    "Retain unknown fields",
+    "Preserve explicit review/pending status"
+  ]
+}
