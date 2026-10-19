@@ -1,0 +1,23 @@
+{
+  "tag": "v0.1.1",
+  "updateSha256": "2833e27a062b154f93f143f8becb9448a510c33e039b630b217dbc8f664af553",
+  "lightSha256": "97594ef47b54cf4b9cfd3783cb077c40f5fa899f9d8f08f9fb24683a2db5bcaa",
+  "installerSource": "https://go.microsoft.com/fwlink/?linkid=2124701",
+  "installerInfo": {
+    "date_time": [
+      2026,
+      10,
+      19,
+      23,
+      59,
+      32
+    ],
+    "create_system": 0,
+    "create_version": 20,
+    "extract_version": 20,
+    "reserved": 0,
+    "volume": 0,
+    "internal_attr": 0,
+    "external_attr": 2180972544
+  }
+}

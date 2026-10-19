@@ -1,0 +1,27 @@
+name: Assemble Windows download packages
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing draft release tag
+        required: true
+        type: string
+permissions:
+  contents: write
+jobs:
+  assemble:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Reuse verified native package and official Microsoft runtime
+        shell: pwsh
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: python -X utf8 tools/assemble-release.py --tag "$env:RELEASE_TAG"
