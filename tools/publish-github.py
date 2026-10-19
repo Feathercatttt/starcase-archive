@@ -7,6 +7,7 @@ GH=Path(os.environ.get('STARCASE_GH','C:/Users/PC/Documents/Codex/2026-10-13/new
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--publish',action='store_true')
 parser.add_argument('--assembly-run',type=int,help='Reuse a GitHub package-assembly run and avoid uploading the large runtime locally')
+parser.add_argument('--essential-only',action='store_true',help='Publish native update/manual ZIP, APK, HTML and source; no dependency on Actions or full offline runtime')
 args=parser.parse_args()
 protocol=(R/'native/windows/UpdateProtocol.cs').read_text(encoding='utf8')
 version=re.search(r'Current="([\d.]+)"',protocol).group(1)
@@ -15,6 +16,7 @@ tag='v'+version
 release_dir=R/'outputs'/('release-'+tag)
 verify_dir=R/'.build'/('published-'+tag);verify_dir.mkdir(exist_ok=True)
 assets=['Starcase-Windows-Update.zip','Starcase-Windows-Light.zip','Starcase-Windows-Full.zip','Starcase-Android.apk','Starcase.html','Starcase-Source.zip','checksums.json']
+if args.essential_only:assets=[name for name in assets if name not in ('Starcase-Windows-Light.zip','Starcase-Windows-Full.zip')]
 roots=['.gitignore','AGENTS.md','README.md','DESIGN.md','src','native','tools','tests','maintenance','schema','docs']
 def call(command,optional=False):
     env=os.environ.copy()
@@ -75,6 +77,9 @@ if release is None:
     gh('release','create',tag,'--repo',repo,'--verify-tag','--draft','--title','星匣 '+tag,'--notes-file',R/'docs/releases'/(tag+'.md'))
     release=find_release();assert release is not None
 if release['draft']:
+    # Discard only incomplete uploads in this owned draft, never completed assets.
+    for a in release['assets']:
+        if a.get('state')=='starter':gh('api','--method','DELETE','repos/'+repo+'/releases/assets/'+str(a['id']))
     if args.assembly_run:
         from assembly_adopt import adopt
         adopt(R,release_dir,repo,args.assembly_run,gh)

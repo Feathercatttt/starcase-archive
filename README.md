@@ -2,13 +2,13 @@
 
 **AI 辅助编写的个人跑团创作工具。当前为早期版本，请定期导出备份；规则内容以使用者原文与裁定为准。**
 
-[Windows 完整包](https://github.com/Feathercatttt/starcase-archive/releases/latest/download/Starcase-Windows-Full.zip) · [Windows 轻量包](https://github.com/Feathercatttt/starcase-archive/releases/latest/download/Starcase-Windows-Light.zip) · [Android APK](https://github.com/Feathercatttt/starcase-archive/releases/latest/download/Starcase-Android.apk) · [离线 HTML](https://github.com/Feathercatttt/starcase-archive/releases/latest/download/Starcase.html) · [全部版本](https://github.com/Feathercatttt/starcase-archive/releases)
+[Windows 电脑版](https://github.com/Feathercatttt/starcase-archive/releases/latest/download/Starcase-Windows-Update.zip) · [Android APK](https://github.com/Feathercatttt/starcase-archive/releases/latest/download/Starcase-Android.apk) · [离线 HTML](https://github.com/Feathercatttt/starcase-archive/releases/latest/download/Starcase.html) · [全部版本](https://github.com/Feathercatttt/starcase-archive/releases)
 
 一个独立于旅人手札的个人创作资料库。这是供审阅模板和操作方式的首版，暂不区分主持人、玩家或剧透权限。
 
 ## 打开
 
-- Windows：完整解压 `星匣-Windows`，打开 `星匣.exe`。完整包附有微软 WebView2 离线安装器；已装运行环境时可用轻量包。
+- Windows：完整解压下载的 ZIP，打开 `Starcase-Update` 文件夹中的 `星匣.exe`。此包既可首次使用，也用于程序内更新。需要 Microsoft Edge WebView2；缺少时按程序提示，或从 [微软官方页面](https://developer.microsoft.com/microsoft-edge/webview2/) 安装环境。
 - 电脑版按普通双击方式运行，不需要勾选“以管理员身份运行”。请先解压，再打开 EXE。
 - Android：安装 `星匣-Android.apk`，应用名称为“星匣”。它与旅人手札使用不同的包名和数据目录，可以同时安装。
 - 网页预览：直接打开 `星匣.html`，不联网也能编辑与保存。浏览器版本的数据保存在该浏览器中，扫码服务由 EXE 提供。
