@@ -25,6 +25,10 @@ def gh(*words,optional=False):return call([GH,*words],optional)
 def git(*words,optional=False):return call(['git',*words],optional)
 def sha(file):return hashlib.sha256(file.read_bytes()).hexdigest()
 def metadata(file):return {'size':file.stat().st_size,'sha256':sha(file)}
+def find_release():
+    # /releases/tags/:tag omits drafts; the owner-visible list includes them.
+    pages=json.loads(gh('api','repos/'+repo+'/releases?per_page=100','--paginate','--slurp'))
+    return next((item for page in pages for item in page if item['tag_name']==tag),None)
 
 assert 'UPDATE_PUBLISHED=true' in (R/'src/native.js').read_text(encoding='utf8')
 assert all((release_dir/name).is_file() for name in assets)
@@ -59,13 +63,14 @@ credentials=['-c','credential.helper=','-c','credential.helper=!'+GH.as_posix()+
 git(*credentials,'push','-u','origin','main')
 existing_tag=git('rev-parse',tag+'^{commit}',optional=True)
 if existing_tag is None:git('tag','-a',tag,'-m','Starcase '+tag,commit)
-else:assert existing_tag==commit,'Existing tag points to a different commit; do not overwrite a published version'
+else:
+    assert not git('diff','--name-only',existing_tag,commit,'--','src','native'),'Existing release tag has different application sources; bump the version'
+    commit=existing_tag
 git(*credentials,'push','origin',tag)
-release_raw=gh('api','repos/'+repo+'/releases/tags/'+tag,optional=True)
-release=json.loads(release_raw) if release_raw else None
+release=find_release()
 if release is None:
     gh('release','create',tag,'--repo',repo,'--verify-tag','--draft','--title','星匣 '+tag,'--notes-file',R/'docs/releases'/(tag+'.md'))
-    release=json.loads(gh('api','repos/'+repo+'/releases/tags/'+tag))
+    release=find_release();assert release is not None
 if release['draft']:
     for name in assets:
         print('Uploading',name,metadata(release_dir/name)['size'],'bytes',flush=True)
