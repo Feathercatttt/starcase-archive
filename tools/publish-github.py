@@ -1,6 +1,6 @@
 """Publish reviewed local Starcase artifacts. Requires explicit --publish; never reads browser credentials."""
 from pathlib import Path
-import argparse, base64, hashlib, json, os, re, shutil, subprocess, time
+import argparse, base64, hashlib, json, os, re, shutil, subprocess, time, urllib.request
 
 R=Path(__file__).resolve().parent.parent
 GH=Path(os.environ.get('STARCASE_GH','C:/Users/PC/Documents/Codex/2026-10-13/new-chat/work/github-tools/gh.exe'))
@@ -103,8 +103,16 @@ for name in assets:
     if a.get('digest'):assert a['digest']=='sha256:'+sha(release_dir/name),'Remote digest mismatch: '+name
 for name in ['Starcase-Windows-Update.zip','Starcase-Android.apk','Starcase.html']:
     print('Reading back public attachment',name,flush=True)
-    gh('release','download',tag,'--repo',repo,'--pattern',name,'--dir',verify_dir,'--clobber')
-    assert sha(verify_dir/name)==sha(release_dir/name),'Downloaded attachment mismatch: '+name
+    last=None
+    for prefix in ['', 'https://gh-proxy.org/','https://ghfast.top/','https://ghproxy.net/']:
+        try:
+            request=urllib.request.Request(prefix+remote_assets[name]['browser_download_url'],headers={'User-Agent':'Starcase-Publish/'+version,'Accept-Encoding':'identity'})
+            with urllib.request.urlopen(request,timeout=20) as response,(verify_dir/name).open('wb') as out:
+                for chunk in iter(lambda:response.read(65536),b''):out.write(chunk)
+            assert sha(verify_dir/name)==sha(release_dir/name),'Downloaded attachment mismatch: '+name
+            last=None;break
+        except Exception as e:last=e
+    if last is not None:raise last
 # Switch the live pointer only after the public native attachments have been read back.
 updates=R/'updates';updates.mkdir(exist_ok=True)
 shutil.copyfile(release_dir/'stable.candidate.json',updates/'stable.json')
