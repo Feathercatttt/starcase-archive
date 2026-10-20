@@ -278,6 +278,28 @@
         "coverId": {
           "type": "string"
         },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "mediaId",
+              "name"
+            ],
+            "properties": {
+              "mediaId": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_-]{1,120}$"
+              },
+              "name": {
+                "type": "string"
+              },
+              "sourceToken": {
+                "type": "string"
+              }
+            }
+          }
+        },
         "createdAt": {
           "type": "string"
         },

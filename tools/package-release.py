@@ -7,6 +7,7 @@ R = Path(__file__).resolve().parent.parent
 O = R / 'outputs'
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--sign', action='store_true', help='Sign a local manifest candidate using the existing private key')
+parser.add_argument('--windows-dir',type=Path,help='Use a separate Windows build folder when the old EXE is running')
 parser.add_argument('--full', action='store_true', help='Also package the Microsoft offline WebView2 installer')
 parser.add_argument('--notes-file', type=Path, help='UTF-8 release notes to embed in the signed manifest')
 args = parser.parse_args()
@@ -18,7 +19,7 @@ code = int(re.search(r'versionCode="(\d+)"', android).group(1))
 assert 'versionName="' + version + '"' in android, 'Windows / Android version mismatch'
 assert 'VERSION=\'' + version + '\'' in (R / 'src/model.js').read_text(encoding='utf8'), 'Web version mismatch'
 assert 'CURRENT="' + version + '"' in (R / 'native/android/src/com/starcase/archive/UpdateProtocol.java').read_text(encoding='utf8'), 'Android update version mismatch'
-win = O / '星匣-Windows'
+win = (args.windows_dir or O / '星匣-Windows').resolve()
 version_api=ctypes.WinDLL('version',use_last_error=True)
 version_api.GetFileVersionInfoSizeW.argtypes=[wintypes.LPCWSTR,ctypes.POINTER(wintypes.DWORD)]
 version_api.GetFileVersionInfoW.argtypes=[wintypes.LPCWSTR,wintypes.DWORD,wintypes.DWORD,ctypes.c_void_p]

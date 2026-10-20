@@ -72,3 +72,5 @@ ZIP 不保留 NTFS integrity 标签：普通用户解压到正常文件夹得到
 - `outputs/release-vVERSION/` 中固定名更新附件、模板 JSON、校验记录。
 
 `--sign` 另生成本地签名候选清单，见发布参考。打包前确认工作区没有用户资料误放入程序目录。不要将整个项目根目录直接压缩上传。
+
+旧 EXE 正在运行且运行文件被锁住时，不强制结束用户进程：设置 STARCASE_WINDOWS_DIR 为独立新版输出文件夹构建，打包时传 --windows-dir 同一路径。tests/windows.py 支持该环境变量。不要让旧 EXE 配上新 service/version.json 后误称构建完成。新版和旧版共用用户数据目录；提醒用户关闭旧窗口后打开新版。

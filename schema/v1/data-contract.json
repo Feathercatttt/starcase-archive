@@ -19,8 +19,14 @@
     "relations",
     "source",
     "coverId",
+    "attachments",
     "createdAt",
     "updatedAt"
+  ],
+  "attachmentKeys": [
+    "mediaId",
+    "name",
+    "sourceToken"
   ],
   "sourceKeys": [
     "kind",

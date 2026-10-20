@@ -1,10 +1,10 @@
 from pathlib import Path
-import subprocess,json,uuid,zipfile,tempfile,ctypes,sys,re
+import subprocess,json,uuid,zipfile,tempfile,ctypes,sys,re,os
 from ctypes import wintypes
 R=Path(__file__).resolve().parent.parent
 version=re.search(r'Current="([\d.]+)"',(R/'native/windows/UpdateProtocol.cs').read_text(encoding='utf8')).group(1)
 # Test a normal user-profile folder, not the Low-integrity build workspace that hid the startup bug.
-folder=Path(tempfile.mkdtemp(prefix='starcase-windows-qa-'));exe=R/'outputs/星匣-Windows/星匣.exe';start=subprocess.STARTUPINFO();start.dwFlags|=subprocess.STARTF_USESHOWWINDOW;start.wShowWindow=0
+folder=Path(tempfile.mkdtemp(prefix='starcase-windows-qa-'));exe=Path(os.environ.get('STARCASE_WINDOWS_DIR',str(R/'outputs/星匣-Windows')))/'星匣.exe';start=subprocess.STARTUPINFO();start.dwFlags|=subprocess.STARTF_USESHOWWINDOW;start.wShowWindow=0
 if '--archive' in sys.argv:
  package=Path(sys.argv[sys.argv.index('--archive')+1]);installation=Path(tempfile.mkdtemp(prefix='starcase-unpacked-'))
  with zipfile.ZipFile(package) as z:

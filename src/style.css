@@ -13,3 +13,6 @@ dialog{padding:0;border:1px solid #c9bba5;border-radius:12px;color:var(--ink);ba
 
 body[data-area=modules]{--accent:#326762;--accent-soft:#dce9df}body[data-area=modules] .section-glyph{background:#dce5d9}
 @media(max-width:620px){.catalog-toolbar{flex-wrap:wrap}.project-filter{display:block;flex-basis:100%}.project-filter select{max-width:none;width:100%;font-size:11px;min-height:37px}.search{flex-basis:160px}.capture-footer select{min-width:90px}}
+
+/* Imported source images remain separate from the cover and collapsed by default. */
+.source-gallery summary{cursor:pointer;font-weight:650;padding:12px 0}.attachment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px}.attachment-grid figure{margin:0;min-width:0}.attachment-grid img{display:block;width:100%;height:180px;object-fit:contain;border-radius:8px;background:var(--paper)}.attachment-grid figcaption{font-size:13px;overflow-wrap:anywhere;line-height:1.5;margin-top:8px}

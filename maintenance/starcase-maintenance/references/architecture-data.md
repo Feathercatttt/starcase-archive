@@ -29,6 +29,7 @@
 - 表格行也有稳定 `id`，不能用行号作永久关联。
 - `relations.targetId` 关联条目 ID，关联不随标题变化断开。
 - `source` 含 `kind/title/url/revision/retrievedAt/raw/review`。原文逐字保留；映射字段可改，`review` 为 pending 或 checked。
+- `attachments` 为可选数组，行含 `mediaId/name/sourceToken`，引用同一库中的图片。阅读页折叠显示；单条分发收集 coverId 与全部 attachments，导入碰到图片 ID 冲突时两处一起重映射。全库备份保留所有 media，包括暂未被引用的原图。
 - `media` 保存原始 PNG / JPEG / WebP / GIF data URL；`coverId` 引用图片。不把 SVG 或远端脚本放进原生页面。
 - 空值表示未提供，不推定 0；原文明确的 `—` 按字面保留。
 - 未识别的 `fields` 保留并可在“其它导入字段”编辑；新增字段不能在导入导出中悄悄丢失。
@@ -71,3 +72,7 @@ Java / JS 分块按 UTF-16 字符长度协同，不能截断代理对。`readLan
 使用可用的 `lark-doc` / `lark-wiki` 技能和 `--as user`。先取当前原文与 revision，再映射字段；保留 raw、URL、读取时间与 pending 状态。以 `ok:true` 和实际读回为凭据，目录浅层枚举不能证明条目缺失。
 
 本机 `private/feishu/` 是私有缓存，`private/make-feishu-sample.py` 生成独立导入包。v0.1.0 仅试取易伤与抵抗、第六发魔弹、水灵-狮、雾隐草四篇和一张原始物品图。完整私设尚未批量迁移。样本单独交给用户，不装进公开源码或更新包。
+
+批量迁移只处理用户明确指定的目录。先递归读完当前分支（不限页），保留节点路径、原文与修订号，再逐项映射。当前私有脚本在 `private/migrate-feishu.py`、`build-monster-import.py`、`install-monster-import.py`；这些含个人来源定位信息，不进入公开源码。多阶段文档可拆成关联形态卡，主卡复用原 URL 的 UUIDv5，其他形态使用稳定后缀；每张卡仍保留完整 source.raw 和该形态 partRaw。
+
+六维值以原文口径记录，用 statBasis / 可编辑说明注明调整值或原样数值；等级与熟练加值分开，缺失值留空。遇到面板与备注冲突时保留两处、标待校对，不擅自选裁定。图片按内容 SHA256 去重，附件保留原 file token 与名称。导入前独立备份，读本机版本后 CAS 合并；原样本仅在用户内容未改时补全，其他已有资料保留。最后对实际 API 读回、原文逐字、所有附件引用、桌面及手机宽度和选中导出往返进行核对。个人资料包仍只放 outputs/private，不放安装包或 GitHub。
