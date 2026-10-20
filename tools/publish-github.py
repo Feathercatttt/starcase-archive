@@ -104,7 +104,7 @@ for name in assets:
 for name in ['Starcase-Windows-Update.zip','Starcase-Android.apk','Starcase.html']:
     print('Reading back public attachment',name,flush=True)
     last=None
-    for prefix in ['', 'https://gh-proxy.org/','https://ghfast.top/','https://ghproxy.net/']:
+    for prefix in ['https://gh-proxy.org/','https://ghfast.top/','', 'https://ghproxy.net/']:
         try:
             # Some local/CDN routes retain a stale or extremely slow release redirect.
             # A fresh public URL still has to match the already-published SHA-256.
