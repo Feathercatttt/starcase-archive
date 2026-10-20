@@ -122,7 +122,10 @@ shutil.copyfile(release_dir/'stable.candidate.json',updates/'stable.json')
 git('add','--','updates/stable.json')
 if git('diff','--cached','--name-only'):git('commit','-m','Publish verified signed update manifest for '+tag);git(*credentials,'push','origin','main')
 remote=gh('api','repos/'+repo+'/contents/updates/stable.json')
-blob=json.loads(remote);assert base64.b64decode(blob['content'])==(updates/'stable.json').read_bytes()
+blob=json.loads(remote)
+# Git may normalize envelope line endings. The signed payload and signature strings
+# must remain identical; only their surrounding JSON whitespace is irrelevant.
+assert json.loads(base64.b64decode(blob['content']))==json.loads((updates/'stable.json').read_bytes())
 result={'repo':'https://github.com/'+repo,'release':release['html_url'],'version':version,'sourceCommit':commit,'manifestCommit':git('rev-parse','HEAD'),'assets':{name:{'size':a['size'],'digest':a.get('digest'),'url':a['browser_download_url']} for name,a in remote_assets.items()},'nativeAttachmentsDownloadedAndMatched':True,'signedManifestReadBack':True}
 (verify_dir/'publish-report.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf8')
 print(json.dumps({k:result[k] for k in ['repo','release','version','nativeAttachmentsDownloadedAndMatched','signedManifestReadBack']},ensure_ascii=False),flush=True)

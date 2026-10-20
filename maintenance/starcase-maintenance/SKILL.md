@@ -7,7 +7,7 @@ description: 维护星匣创作档案的世界观、COC 模组、规则与灵感
 
 项目根目录：`D:/软件/DSH 大肥鱼专用/星匣`。先阅读这里的 `AGENTS.md`、`README.md` 和相关源文件。不要把长对话里旅人手札的旧要求自动套入这个新软件。
 
-当前交接基线：2026-10-20，v0.1.2 本地构建（线上版本以远端为准），个人资料库，暂不区分主持人与玩家。Windows、Android、单文件 HTML 均有独立发布配置。用户已授权发布独立公开仓库 `Feathercatttt/starcase-archive`，`src/native.js` 的 `UPDATE_PUBLISHED=true`；发布完成与否以远端 release、签名清单及验证记录为准。后续接手先核实实际线上状态。
+当前交接基线：2026-10-20，v0.1.2 已发布（后续接手仍核对远端），个人资料库，暂不区分主持人与玩家。Windows、Android、单文件 HTML 均有独立发布配置。用户已授权发布独立公开仓库 `Feathercatttt/starcase-archive`，`src/native.js` 的 `UPDATE_PUBLISHED=true`；发布完成与否以远端 release、签名清单及验证记录为准。后续接手先核实实际线上状态。
 
 ## 用户确定的产品方向
 

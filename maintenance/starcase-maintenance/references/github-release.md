@@ -91,3 +91,5 @@ GitHub Pages 可选，仅作下载说明页或以后插件的静态托管；**EX
 以上文档于 2026-10-19 查阅。执行新发布前确认实际 CLI/官方接口和仓库状态。
 
 本项目已有 tools/publish-github.py --publish --essential-only：只发布原生更新 ZIP（也可首次安装）、APK、HTML、源码和校验文件，适合 GitHub Actions 排队或完整运行环境包上传过慢时使用。仍须上传完整附件、公开 GET 读回 SHA256 后再切换 stable.json。不能把未完成的 Full/Light 云端组装说成已发布。tests/online-windows.py 使用实际 C# 引擎；tests/online-android.cjs 在独占 emulator-5590 的只读模拟器内执行真实签名 APK 更新并检查资料保留，不操作实体手机。生产 APK 不开放调试，用系统界面验证；安装完成应先结束安装器，待包就绪再重启应用。
+
+发布验证遇到 Git 自动转换 CRLF/LF 时，比较解析后的签名信封，确认 payload 与 signature 字符串逐字相同；不要把信封外层 JSON 的换行差异误当成签名载荷被修改。实际签名仍验证 base64 解码后的 payload 原字节。工具下载公开附件优先测通的镜像并用新查询参数避开旧重定向缓存，完整 SHA256 必须匹配。
