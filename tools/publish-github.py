@@ -106,7 +106,10 @@ for name in ['Starcase-Windows-Update.zip','Starcase-Android.apk','Starcase.html
     last=None
     for prefix in ['', 'https://gh-proxy.org/','https://ghfast.top/','https://ghproxy.net/']:
         try:
-            request=urllib.request.Request(prefix+remote_assets[name]['browser_download_url'],headers={'User-Agent':'Starcase-Publish/'+version,'Accept-Encoding':'identity'})
+            # Some local/CDN routes retain a stale or extremely slow release redirect.
+            # A fresh public URL still has to match the already-published SHA-256.
+            url=prefix+remote_assets[name]['browser_download_url']+'?starcase_verify='+str(int(time.time()))
+            request=urllib.request.Request(url,headers={'User-Agent':'Starcase-Publish/'+version,'Accept-Encoding':'identity'})
             with urllib.request.urlopen(request,timeout=20) as response,(verify_dir/name).open('wb') as out:
                 for chunk in iter(lambda:response.read(65536),b''):out.write(chunk)
             assert sha(verify_dir/name)==sha(release_dir/name),'Downloaded attachment mismatch: '+name
